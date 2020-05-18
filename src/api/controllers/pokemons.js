@@ -1,12 +1,6 @@
 module.exports = () => {
-    const { Client } = require('pg');
     const controller = {};
-
-    const connectionString = "postgres://pokemon_api:pokemon_api@localhost:5432/pokemon_api";
-
-    const client = new Client({
-        connectionString: connectionString
-    });
+    const client = require('../../database/client')();
 
     client.connect();
 
