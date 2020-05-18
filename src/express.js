@@ -9,8 +9,7 @@ module.exports = () => {
 
     app.use(bodyParser.json());
 
-    require('./api/routes/pokemons')(app);
-    require('./api/routes/idPokemon')(app);
+    require('./api/routes/index')(app);
 
     return app;
 }
