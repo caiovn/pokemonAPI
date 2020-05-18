@@ -4,20 +4,20 @@ module.exports = () => {
 
     client.connect();
 
-    controller.getPokemonId = (req, res) => {
-        const { id } = req.params;
+    controller.pokemonByName = (req, res) => {
+        const { name } = req.params;
 
-        const text = 'SELECT info FROM pokemons WHERE id=$1';
-        const value = [id];
+        const text = "SELECT info FROM pokemons WHERE info ->> 'name' ILIKE $1";
+        const value = [name];
 
         client.query(text, value, (err, result) => {
-            if(err){
+            if(err) {
                 console.log(err);
                 res.status(400).send(err);
             } else {
                 res.status(200).json(result.rows);
             }
-        })
+        });
     }
 
     return controller;

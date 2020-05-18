@@ -5,7 +5,9 @@ module.exports = () => {
     client.connect();
 
     controller.listPokemons = (req, res) => {
-        client.query('SELECT info FROM pokemons', (err, result) => {
+        const text = 'SELECT info FROM pokemons'
+
+        client.query(text, (err, result) => {
             if(err){
                 console.log(err);
                 res.status(400).send(err);
