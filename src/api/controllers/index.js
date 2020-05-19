@@ -1,6 +1,6 @@
 module.exports = () => {
     const controller = {};
-    const client = require('../../database/client')();
+    const client = require('../database/client')();
 
     client.connect();
 
@@ -28,7 +28,11 @@ module.exports = () => {
                 console.log(err);
                 res.status(400).send(err);
             } else {
-                res.status(200).json(result.rows);
+                if(result.rowCount){
+                    res.status(200).json(result.rows);
+                } else {
+                    res.status(404).json({ message: 'Pokémon not found!' });
+                }
             }
         })
     };
@@ -44,7 +48,11 @@ module.exports = () => {
                 console.log(err);
                 res.status(400).send(err);
             } else {
-                res.status(200).json(result.rows);
+                if(result.rowCount){
+                    res.status(200).json(result.rows);
+                } else {
+                    res.status(404).json({ message: 'Pokémon not found!' });
+                }
             }
         });
     };
