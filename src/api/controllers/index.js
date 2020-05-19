@@ -57,5 +57,18 @@ module.exports = () => {
         });
     };
 
+    controller.getRandomPokemon = (req, res) => {
+        const text = 'SELECT info FROM pokemons ORDER BY random() LIMIT 1';
+
+        client.query(text, (err, result) =>{
+            if(err) {
+                console.log(err)
+                res.status(400).send(err);
+            } else {
+                res.status(200).json(result.rows);
+            }
+        });
+    }
+
     return controller;
 }
