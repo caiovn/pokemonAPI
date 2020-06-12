@@ -17,11 +17,11 @@ module.exports = () => {
         });
     };
 
-    controller.getPokemonById = (req, res) => {
-        const { id } = req.params;
+    controller.getPokemonByNumber = (req, res) => {
+        const { number } = req.params;
 
-        const text = 'SELECT info FROM pokemons WHERE id=$1';
-        const value = [id];
+        const text = "SELECT info FROM pokemons WHERE info ->> 'num' = $1";
+        const value = [number];
 
         client.query(text, value, (err, result) => {
             if(err){

@@ -1,8 +1,8 @@
 module.exports = app => {
     const controller = require('../controllers/index')(app);
 
-    app.route('/api/v1/pokemons').get(controller.listPokemons);
-    app.route('/api/v1/pokemon/id/:id').get(controller.getPokemonById);
-    app.route('/api/v1/pokemon/name/:name').get(controller.getPokemonByName);
-    app.route('/api/v1/pokemon/random').get(controller.getRandomPokemon);
+    app.route('/api/pokemons').get(controller.listPokemons);
+    app.route('/api/pokemon/number/:number').get(controller.getPokemonByNumber);
+    app.route('/api/pokemon/name/:name').get(controller.getPokemonByName);
+    app.route('/api/pokemon/random').get(controller.getRandomPokemon);
 }
